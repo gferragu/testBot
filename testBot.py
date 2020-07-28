@@ -34,3 +34,33 @@ print(reddit.read_only)  # Output: False
 # reddit.read_only = True
 
 # %% Getting instances of "subreddit" and "submission"
+
+# for submission in reddit.subreddit("learnpython").hot(limit=10):
+#     print(submission.title)
+
+# assume you have a Reddit instance bound to variable `reddit`
+subreddit = reddit.subreddit("redditdev")
+
+print(subreddit.display_name)  # Output: redditdev
+print(subreddit.title)         # Output: reddit Development
+print(subreddit.description)   # Output: A subreddit for discussion of ...
+
+# %%
+
+# assume you have a Subreddit instance bound to variable `subreddit`
+for submission in subreddit.hot(limit=10):
+    print(submission.title)     # Output: the submission's title
+    print(submission.score)     # Output: the submission's score
+    print(submission.id)        # Output: the submission's ID
+    print(submission.url)       # Output: the URL the submission points to
+                                # or the submission's URL if it's a self post
+
+# assume you have a Reddit instance bound to variable `reddit`
+"""
+But how do you generate the submission id?
+"""
+submission = reddit.submission(id="39zje0")
+print(submission.title)  # Output: reddit will soon only be available ...
+
+# or
+submission = reddit.submission(url='https://www.reddit.com/...')
